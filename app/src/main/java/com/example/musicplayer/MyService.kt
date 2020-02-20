@@ -6,11 +6,11 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
+import com.example.musicplayer.App.Companion.CHANNEL_ID
 
 class MyService : Service() {
 
     private lateinit var mediaPlayer : MediaPlayer
-    //private var isPlay : Boolean = false
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
@@ -19,7 +19,7 @@ class MyService : Service() {
             val notificationIntent = Intent(this, MainActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
 
-            val notification = NotificationCompat.Builder(this, "TestService")
+            val notification = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Song player")
                 .setContentText("Your favourite song..")
                 .setSmallIcon(R.drawable.ic_music_note_black_24dp)
